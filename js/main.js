@@ -1,6 +1,6 @@
 const listaPerguntas = [
   new Questao("_________ é a fonte da juventude e a coisa ________ a fazer. Quais palavras, em ordem, completam a frase?", ["Natural, certa", "O suco, certa", "Natural, errada"], 0),
-  new Questao("Quanto você aguenta na rosca?", ["10kg", "40kg (quando passar o mouse troca pra 40cm)", "Nenhuma das anteriores"], 0),
+  new Questao("Quanto você aguenta na rosca?", ["10kg", "40kg", "Nenhuma das anteriores"], 0),
   new Questao("Quem você pensa que é?", ["Chris Bumstead, Sibam.", "Pessoa comum, natural.", "Pessoa comum, hormonizada."], 1),
   new Questao("Qual a frase dita por Rodrigo Góes ao finalizar seus vídeos?", ["Rodrigo Goes Out!", "Tmj família!", "Um beijo, um queijo e até mais!"], 0),
   new Questao("Você aplica no bumbum quando ninguém está olhando?", ["Sim né, não sou natty.", "Eu não, sai fora pô."], 1),
@@ -15,6 +15,7 @@ let perguntaAtual = 0;
 let resultado = listaPerguntas.length;
 
 function init(){  
+  console.warn("WOOOOW LOOK AT HIM!! Are you trying to cheat??!");
   montaPergunta();  
 }
 
@@ -60,8 +61,8 @@ function sairTela(){
 
 }
 
-function resultado(){
-  
+function avaliaResultado(){
+  console.log("hahs");
 }
 
  function mobileCheck(){
