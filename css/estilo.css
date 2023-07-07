@@ -14,6 +14,7 @@
     border: 0;
     outline: none;
     box-sizing: border-box;
+    font-family: 'Agdasima', sans-serif;
 }
 body{
     height: 100vh;
@@ -34,7 +35,6 @@ body{
     padding: 28px 32px;
     overflow: hidden;
     border-radius: 18px;
-    font-family: "Roboto", sans-serif;
     transition: var(--transicaoPadrao);
     box-shadow: 2px 2px 5px 0px black;
 
