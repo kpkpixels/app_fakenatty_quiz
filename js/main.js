@@ -1,18 +1,63 @@
 const listaPerguntas = [
-  new Questao("_________ é a fonte da juventude e a coisa ________ a fazer. Quais palavras, em ordem, completam a frase?", ["Natural, certa", "O suco, certa", "Natural, errada"], 0),
-  new Questao("Quanto você aguenta na rosca?", ["10kg", "40kg", "Nenhuma das anteriores"], 0),
-  new Questao("Quem você pensa que é?", ["Chris Bumstead, Sibam.", "Pessoa comum, natural.", "Pessoa comum, hormonizada."], 1),
-  new Questao("Qual a frase dita por Rodrigo Góes ao finalizar seus vídeos?", ["Rodrigo Goes Out!", "Tmj família!", "Um beijo, um queijo e até mais!"], 0),
-  new Questao("Você aplica no bumbum quando ninguém está olhando?", ["Sim né, não sou natty.", "Eu não, sai fora pô."], 1),
-  new Questao("O ______ vicia, o shape vicia. Qual palavra completa a frase?", ["Baseball Bat.", "Suco.", "Chris Bumstead, Sibam."], 1),
-  new Questao("O que mais se encaixa com você?", ["Natural, boa alimentação", "17 anos, natural, vegano e alérgico a água.", "Abençoado pelo suco, vivo do suco, suco is my life."], 0),
-  new Questao("Pergunta decisiva, seja sincero. Natty or Not? (Natural ou não?)", ["Sim, sou natural!", "Sim, sou mais natural que uma árvore de laranjas.", "Não Rodrigo, não sou natural! Admito que fiz amor com o suco."], 0)
-  ];
+  new Questao("_________ é a fonte da juventude e a coisa ________ a fazer. Quais palavras, em ordem, completam a frase?",
+    [
+      new Resposta("Natural, certa", "meu_veredito_fake.mp4", "rodrigo_beijo.png"),
+      new Resposta("O suco, certa", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Natural, errada", "meu_veredito_fake.mp4", "rodrigo_t.png")
+    ], 0),
+  new Questao("Quanto você aguenta na rosca?",
+    [
+      new Resposta("10kg", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("40kg (quando passar o mouse troca pra 40cm)", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Nenhuma das anteriores", "meu_veredito_fake.mp4", "rodrigo_desapontado.png")
+    ], 0),
+  new Questao("Quem você pensa que é?",
+    [
+      new Resposta("Chris Bumstead, Sibam.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Pessoa comum, natural.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Pessoa comum, hormonizada.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png")
+    ], 1),
+  new Questao("Qual a frase dita por Rodrigo Goes ao finalizar seus vídeos?",
+    [
+      new Resposta("Rodrigo Goes Out!", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Tmj família!", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Um beijo na bunda e até segunda!", "meu_veredito_fake.mp4", "rodrigo_desapontado.png")
+    ], 1),
+  new Questao("Você aplica no bumbum quando ninguém está olhando?",
+    [
+      new Resposta("Sim né, não sou natty.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Eu não, sai fora pô.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png")
+    ], 0),
+  new Questao("O ______ vicia, o shape vicia. Qual palavra completa a frase?",
+    [
+      new Resposta("Baseball Bat.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Suco.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Chris Bumstead, Sibam.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png")
+    ], 1),
+  new Questao("O que mais se encaixa com você?",
+    [
+      new Resposta("Natural, boa alimentação", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("17 anos, natural, vegano e alérgico a água.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Abençoado pelo suco, vivo do suco, suco is my life.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png")
+    ], 0),
+  new Questao("Pergunta decisiva, seja sincero. Natty or Not? (Natural ou não?)",
+    [
+      new Resposta("Sim, sou natural!", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Sim, sou mais natural que uma árvore de laranjas.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png"),
+      new Resposta("Não Rodrigo, não sou natural! Admito que fiz amor com o suco.", "meu_veredito_fake.mp4", "rodrigo_desapontado.png")
+    ], 0)
+];
+
 
 const container_questao = document.querySelector(".container_questao");
+const imagem_rodrigo = document.querySelector(".imagem_rodrigo");
+const video_rodrigo = document.querySelector(".video_rodrigo");
 
 let perguntaAtual = 0;
 let resultado = listaPerguntas.length;
+
+const caminhoVideo = "files/videos/";
+const caminhoImg = "files/imgs/"
 
 function init(){  
   console.warn("WOOOOW LOOK AT HIM!! Are you trying to cheat??!");
@@ -26,8 +71,7 @@ function montaPergunta(){
     let respostas = "";
     for (let i = 0; i < listaPerguntas[perguntaAtual].respostas.length; i++) {
       const resposta = listaPerguntas[perguntaAtual].respostas[i];
-      
-      respostas+= '<input type="button" onclick="sairTela()" value="'+resposta+'">';    
+      respostas+= '<input type="button" onmouseover="emiteReacaoHover('+perguntaAtual+','+i+')" onclick="sairTela()" value="'+resposta.texto+'">';            
     }
 
     container_questao.innerHTML = 
@@ -54,6 +98,8 @@ function sairTela(){
   corpo_questao.classList.remove("entrarTela");
   corpo_questao.classList.add("sairTela");
 
+  emiteReacaoRodrigo();
+
   setTimeout(() => {      
     corpo_questao.remove();
     montaPergunta();
@@ -63,6 +109,34 @@ function sairTela(){
 
 function avaliaResultado(){
   console.log("hahs");
+}
+
+function emiteReacaoRodrigo(indice){
+  let tempoTimeout = 0;
+
+  imagem_rodrigo.classList.add("oculto");
+  video_rodrigo.classList.remove("oculto");
+
+  let video = video_rodrigo.querySelector("video");
+  video.src = caminhoVideo+"meu_veredito_fake.mp4";  
+
+  setTimeout(() => {
+    tempoTimeout = (video.duration * 1000) - 1000;
+
+    setTimeout(() => {      
+      video_rodrigo.classList.add("oculto");
+      imagem_rodrigo.classList.remove("oculto");
+    }, tempoTimeout);
+  }, "1000");
+
+  
+}
+
+function emiteReacaoHover(indicePergunta, indiceResposta){
+  const caminhoImgResposta = listaPerguntas[indicePergunta].respostas[indiceResposta].imgReacaoHover;
+
+  imagem_rodrigo.querySelector("img").src = caminhoImg+caminhoImgResposta; 
+
 }
 
  function mobileCheck(){

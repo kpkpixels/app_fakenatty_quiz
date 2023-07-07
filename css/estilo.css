@@ -29,6 +29,7 @@ body{
     position: relative;
     width: 93vw;
     height: 93vh;
+    max-width: 1000px;
     background: var(--cor-fundo);
     padding: 28px 32px;
     overflow: hidden;
@@ -78,9 +79,11 @@ input[type="button"]:hover{
     display: flex;
     justify-content: center;
 }
-.reacao_rodrigo img{
+.reacao_rodrigo img,
+.reacao_rodrigo video{
     width: 100%;
     max-width: 400px;
+    border-radius: 15px;
 }
 .corpo_questao{
     transition: var(--transicaoPadrao);
@@ -117,8 +120,14 @@ input[type="button"]:hover{
 .alternativas{
     margin: 15px 0;
 }
-
-
+.oculto{
+    display: none;
+    opacity: 0;
+}
+.imagem_rodrigo, .video_rodrigo{
+    transition: var(--transicaoPadrao);
+    opacity: 1;
+}
 
 @media only screen and (max-width: 800px) {
     .container{
