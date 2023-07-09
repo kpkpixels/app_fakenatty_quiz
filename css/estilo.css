@@ -145,6 +145,17 @@ input[type="button"]:hover{
     display: none;
     opacity: 0;
 }
+.barra_loading{
+    height: 8px;
+    background-color: var(--cor-letras);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: var(--transicaoPadrao);
+}
+.carregando{
+    font-size: 40px;
+}
 
 @media only screen and (max-width: 800px) {
     .container{

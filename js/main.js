@@ -50,22 +50,34 @@ const listaPerguntas = [
 
 const alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-const container_questao = document.querySelector(".container_questao");
-const imagem_rodrigo = document.querySelector(".imagem_rodrigo");
-const video_rodrigo = document.querySelector(".video_rodrigo");
+const estrutura = document.querySelector(".estrutura");
+const imagem_rodrigo = estrutura.querySelector(".imagem_rodrigo");
+const video_rodrigo = estrutura.querySelector(".video_rodrigo");
+const container_questao = estrutura.querySelector(".container_questao");
+
+const barra_loading = document.querySelector(".barra_loading");
+const carregando = document.querySelector(".carregando");
 
 let perguntaAtual = 0;
 let resultado = listaPerguntas.length;
+let tamanhoBarra = 0;
 
 const caminhoVideo = "files/videos/";
 const caminhoImg = "files/imgs/"
 
 function init(){  
   console.warn("WOOOOW LOOK AT HIM!! Are you trying to cheat??!");
+
+  estrutura.classList.remove("oculto");
+  carregando.classList.add("oculto");
+
   montaPergunta();  
 }
 
 function montaPergunta(){
+  barra_loading.style.width = tamanhoBarra + "%";
+  tamanhoBarra += (100 / listaPerguntas.length);
+
   if (perguntaAtual < listaPerguntas.length){
     let respostas = "";
     imagem_rodrigo.innerHTML='<img class="padrao selecionada" src="files/imgs/rodrigo_desapontado.jpg" alt="">';
@@ -76,6 +88,7 @@ function montaPergunta(){
     
       imagem_rodrigo.innerHTML+= '<img id=img'+alfabeto[i]+perguntaAtual+' src="'+caminhoImg+resposta.imgReacaoHover+'" alt="">'
     }
+
 
     container_questao.innerHTML = 
     '<div class="corpo_questao entrada">'+
