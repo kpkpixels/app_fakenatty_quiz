@@ -71,6 +71,7 @@ input[type="button"]:hover{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    transition: var(--transicaoPadrao);
 }
 .titulo{
     display: flex;
@@ -84,14 +85,17 @@ input[type="button"]:hover{
 .reacao_rodrigo{
     display: flex;
     justify-content: center;
+    height: 260px;
 }
 .reacao_rodrigo img,
 .reacao_rodrigo video{
     width: 100%;
     max-width: 400px;
-    border-radius: 15px;
     transition:  var(--transicaoPadrao);
     position: absolute;
+}
+video, img{
+    border-radius: 15px;
 }
 
 .reacao_rodrigo img{
@@ -141,11 +145,7 @@ input[type="button"]:hover{
 .alternativas{
     margin: 15px 0;
 }
-.oculto{
-    display: none;
-    opacity: 0;
-}
-.barra_loading{
+.barra_status_respostas{
     height: 8px;
     background-color: var(--cor-letras);
     position: absolute;
@@ -155,6 +155,36 @@ input[type="button"]:hover{
 }
 .carregando{
     font-size: 40px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;   
+    transition: var(--transicaoPadrao);
+}
+.barra_loading_resultado{
+    height: 8px;
+    background-color: var(--cor-letras);
+    transition: var(--transicaoPadrao);    
+}
+.estrutura_resultado{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    flex-direction: column;
+    transition: var(--transicaoPadrao);
+}
+.estrutura_resultado video{
+    width: 100%;
+    height: 100%;
+}
+
+
+.oculto{
+    display: none;
+    opacity: 0;
 }
 
 @media only screen and (max-width: 800px) {
@@ -173,9 +203,19 @@ input[type="button"]:hover{
         -webkit-text-stroke-width: 3px;
         font-size: 25px;
     }
+    .reacao_rodrigo{
+        height: 170px;
+    }
     .reacao_rodrigo img,
     .reacao_rodrigo video{
         max-width: 90%;
     }
+    .estrutura_resultado{
+        margin:0px;
+    }
+    .estrutura_resultado video{        
+        height: auto;
+    }
+    
 
 }

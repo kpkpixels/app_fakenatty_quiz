@@ -22,12 +22,12 @@ const listaPerguntas = [
       new Resposta("Rodrigo Goes Out!", "meu_veredito_fake.mp4", "rodrigo_desapontado.jpg"),
       new Resposta("Tmj família!", "meu_veredito_fake.mp4", "rodrigo_desapontado.jpg"),
       new Resposta("Um beijo na bunda e até segunda!", "meu_veredito_fake.mp4", "rodrigo_desapontado.jpg")
-    ], 1),
+    ], 0),
   new Questao("Você aplica no bumbum quando ninguém está olhando?",
     [
       new Resposta("Sim né, não sou natty.", "meu_veredito_fake.mp4", "rodrigo_desapontado.jpg"),
-      new Resposta("Eu não, sai fora pô.", "meu_veredito_fake.mp4", "rodrigo_desapontado.jpg")
-    ], 0),
+      new Resposta("Não entendi.", "meu_veredito_fake.mp4", "rodrigo_desapontado.jpg")
+    ], 1),
   new Questao("O ______ vicia, o shape vicia. Qual palavra completa a frase?",
     [
       new Resposta("Baseball Bat.", "meu_veredito_fake.mp4", "rodrigo_desapontado.jpg"),
@@ -55,12 +55,16 @@ const imagem_rodrigo = estrutura.querySelector(".imagem_rodrigo");
 const video_rodrigo = estrutura.querySelector(".video_rodrigo");
 const container_questao = estrutura.querySelector(".container_questao");
 
-const barra_loading = document.querySelector(".barra_loading");
+const barra_status_respostas = document.querySelector(".barra_status_respostas");
+const barra_loading_resultado = document.querySelector(".barra_loading_resultado");
 const carregando = document.querySelector(".carregando");
+
+const estrutura_resultado = document.querySelector(".estrutura_resultado");
 
 let perguntaAtual = 0;
 let resultado = listaPerguntas.length;
 let tamanhoBarra = 0;
+let videoTimeout;
 
 const caminhoVideo = "files/videos/";
 const caminhoImg = "files/imgs/"
@@ -70,21 +74,23 @@ function init(){
 
   estrutura.classList.remove("oculto");
   carregando.classList.add("oculto");
+  
+  //avaliaResultado();
 
   montaPergunta();  
 }
 
 function montaPergunta(){
-  barra_loading.style.width = tamanhoBarra + "%";
+  barra_status_respostas.style.width = tamanhoBarra + "%";
   tamanhoBarra += (100 / listaPerguntas.length);
-
+  
   if (perguntaAtual < listaPerguntas.length){
     let respostas = "";
     imagem_rodrigo.innerHTML='<img class="padrao selecionada" src="files/imgs/rodrigo_desapontado.jpg" alt="">';
     
     for (let i = 0; i < listaPerguntas[perguntaAtual].respostas.length; i++) {
       const resposta = listaPerguntas[perguntaAtual].respostas[i];
-      respostas+= '<input type="button" id="'+alfabeto[i]+perguntaAtual+'" onmouseout="resetReacaoHover(this)" onmouseover="emiteReacaoHover('+perguntaAtual+','+i+', this);" onclick="sairTela()" value="'+resposta.texto+'">';            
+      respostas+= '<input type="button" id="'+alfabeto[i]+perguntaAtual+'" onmouseout="resetReacaoHover(this)" onmouseover="emiteReacaoHover('+perguntaAtual+','+i+', this);" onclick="avaliaResposta(this)" value="'+resposta.texto+'">';            
     
       imagem_rodrigo.innerHTML+= '<img id=img'+alfabeto[i]+perguntaAtual+' src="'+caminhoImg+resposta.imgReacaoHover+'" alt="">'
     }
@@ -95,10 +101,14 @@ function montaPergunta(){
     '<div class="questao"><h2>'+Number(perguntaAtual+1)+'. '+listaPerguntas[perguntaAtual].texto+'</h2><div>'+
     '<div class="alternativas">'+respostas+'</div>';
 
-    perguntaAtual += 1;
+    perguntaAtual += 1;        
+
     setTimeout(() => {      
       entrarTela();
     }, "300");
+  }
+  else{
+    avaliaResultado();
   }
 }
 
@@ -113,8 +123,10 @@ function sairTela(){
   
   corpo_questao.classList.remove("entrarTela");
   corpo_questao.classList.add("sairTela");
-
-  emiteReacaoRodrigo();
+  
+  if (perguntaAtual < listaPerguntas.length){
+    emiteReacaoRodrigo();    
+  }
 
   setTimeout(() => {      
     corpo_questao.remove();
@@ -123,11 +135,91 @@ function sairTela(){
 
 }
 
+function avaliaResposta(elemento){
+  const indiceRes = alfabeto.indexOf(elemento.id[0]);
+
+  if (listaPerguntas[elemento.id[1]].indiceRespostaCorreta !== indiceRes){
+    resultado -= 1; 
+  }
+
+  console.log(resultado);  
+  sairTela();
+}
+
 function avaliaResultado(){
-  console.log("hahs");
+  let video = video_rodrigo.querySelector("video");
+  video.pause();
+  
+  const textoCarregando = carregando.querySelector("h3");
+
+  estrutura.classList.remove("entrarTela");
+  estrutura.classList.add("sairTela");
+
+  setTimeout(()=>{
+    estrutura.classList.add("oculto");
+    carregando.classList.remove("oculto");
+
+    setTimeout(() => {
+      carregando.classList.add("entrarTela");
+
+      barra_loading_resultado.style.width = "0%";
+      textoCarregando.innerHTML = "Woooow, look at him!"
+    
+      let tamanhoBarraResultado = 0;
+      const id = setInterval(frame, 1000);
+      function frame() {
+        if (tamanhoBarraResultado == 100) {
+          clearInterval(id);
+          montaResultado();
+        } else {
+          tamanhoBarraResultado+= 20; 
+          textoCarregando.innerHTML = setTextoCarregando(tamanhoBarraResultado);
+          barra_loading_resultado.style.width = tamanhoBarraResultado + '%'; 
+        }
+      }
+    }, 300);
+    
+  }, 300);
+
+}
+
+function setTextoCarregando(porcentagem){  
+  if (porcentagem >= 80){
+    return "A verdade está próxima!";
+  }
+  if (porcentagem >= 20){
+    return "Hmmmmm";
+  }
+  else{
+    return "Rodrigo está se preparando, aguarde...";
+  }
+}
+
+function montaResultado(){
+  estrutura_resultado.classList.remove("oculto");
+  estrutura.classList.add("oculto");
+  carregando.classList.add("oculto");
+
+  let reacaoResultadoVideo;
+
+  if (resultado > 5){
+    reacaoResultadoVideo = caminhoVideo + "jesus_maria_jose.mp4";
+  }
+  else if (resultado == 5){
+    reacaoResultadoVideo = caminhoVideo + "jesus_maria_jose.mp4";
+  }
+  else{
+    reacaoResultadoVideo = caminhoVideo + "meu_veredito_fake.mp4";
+  }
+
+  estrutura_resultado.innerHTML = '<video src="'+reacaoResultadoVideo+'" autoplay></video>'+
+  '<input type="button" value="Refazer Quiz" onclick="resetQuiz()" style="margin-top: 15px">';
+
 }
 
 function emiteReacaoRodrigo(indice){
+  clearTimeout(videoTimeout);
+
   let tempoTimeout = 0;
 
   imagem_rodrigo.classList.add("oculto");
@@ -139,7 +231,7 @@ function emiteReacaoRodrigo(indice){
   setTimeout(() => {
     tempoTimeout = (video.duration * 1000) - 1000;
 
-    setTimeout(() => {      
+    videoTimeout = setTimeout(() => {      
       video_rodrigo.classList.add("oculto");
       imagem_rodrigo.classList.remove("oculto");
     }, tempoTimeout);
@@ -171,6 +263,18 @@ function resetReacaoHover(elemento){
   }
 }
 
+function resetQuiz(){
+  perguntaAtual = 0;
+  resultado = listaPerguntas.length;
+  tamanhoBarra = 0;
+
+  estrutura.classList.remove("oculto");
+  estrutura.classList.remove("sairTela");
+  carregando.classList.add("oculto");
+  estrutura_resultado.classList.add("oculto");
+
+  montaPergunta();
+}
 
 function mobileCheck(){
   let check = false;
