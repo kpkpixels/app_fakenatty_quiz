@@ -88,6 +88,10 @@ function montaPergunta(){
     let respostas = "";
     imagem_rodrigo.innerHTML='<img class="padrao selecionada" src="files/imgs/rodrigo_desapontado.jpg" alt="">';
     
+    if (perguntaAtual == 3){
+      abreAnuncio();
+    }
+
     for (let i = 0; i < listaPerguntas[perguntaAtual].respostas.length; i++) {
       const resposta = listaPerguntas[perguntaAtual].respostas[i];
       respostas+= '<input type="button" id="'+alfabeto[i]+perguntaAtual+'" onmouseout="resetReacaoHover(this)" onmouseover="emiteReacaoHover('+perguntaAtual+','+i+', this);" onclick="avaliaResposta(this)" value="'+resposta.texto+'">';            
@@ -147,6 +151,8 @@ function avaliaResposta(elemento){
 }
 
 function avaliaResultado(){
+  fechaAnuncio();
+  
   let video = video_rodrigo.querySelector("video");
   video.pause();
   
@@ -159,11 +165,11 @@ function avaliaResultado(){
     estrutura.classList.add("oculto");
     carregando.classList.remove("oculto");
 
+    barra_loading_resultado.style.width = "0%";
+    textoCarregando.innerHTML = "Woooow, look at him!"
+
     setTimeout(() => {
       carregando.classList.add("entrarTela");
-
-      barra_loading_resultado.style.width = "0%";
-      textoCarregando.innerHTML = "Woooow, look at him!"
     
       let tamanhoBarraResultado = 0;
       const id = setInterval(frame, 1000);
@@ -196,9 +202,13 @@ function setTextoCarregando(porcentagem){
 }
 
 function montaResultado(){
-  estrutura_resultado.classList.remove("oculto");
+  estrutura_resultado.classList.remove("oculto");  
   estrutura.classList.add("oculto");
   carregando.classList.add("oculto");
+  
+  setTimeout(() => {
+    estrutura_resultado.classList.add("escala");
+  }, 100);
 
   let reacaoResultadoVideo;
 
@@ -271,9 +281,28 @@ function resetQuiz(){
   estrutura.classList.remove("oculto");
   estrutura.classList.remove("sairTela");
   carregando.classList.add("oculto");
+  carregando.classList.remove("entrarTela");
   estrutura_resultado.classList.add("oculto");
+  estrutura_resultado.classList.remove("escala");
 
   montaPergunta();
+}
+
+function redirecionador(){
+  resultado = 1;
+  perguntaAtual = 8;
+  tamanhoBarra = 100;
+  fechaAnuncio();
+  montaPergunta();
+}
+
+function abreAnuncio(){
+  const popup = document.querySelector(".popup_anuncio");
+  popup.classList.remove("entrada");
+}
+function fechaAnuncio(){
+  const popup = document.querySelector(".popup_anuncio");
+  popup.classList.add("entrada");
 }
 
 function mobileCheck(){
