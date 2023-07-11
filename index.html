@@ -17,7 +17,14 @@
             <h1>ARE YOU NATTY OR NOT?</h1>
         </div>  
 
-        <div class="estrutura entrarTela oculto">            
+        <div class="estrutura_inicio">
+            <div class="video_rodrigo">
+                <video class="oculto" src="files/videos/introducao_rodrigo.mp4" style="width: 100%;"></video>
+            </div> 
+            <input type="button" value="Começar" style="width: 50%;" onclick="comecar()">
+        </div>
+
+        <div class="estrutura oculto">            
             <div class="reacao_rodrigo">
                 <div class="imagem_rodrigo">
                     <img class="padrao selecionada" src="files/imgs/rodrigo_desapontado.jpg" alt="">
@@ -33,7 +40,7 @@
             
         </div>
 
-        <div class="carregando entrada">
+        <div class="carregando oculto">
             <h3>Rodrigo está se preparando, aguarde...</h3>
 
             <div class="barra_loading_resultado">
@@ -49,8 +56,8 @@
             <a href="#" onclick="fechaAnuncio()">x</a>
             <img width="50px" src="files/imgs/muscular_man.png" alt="">
             <div>
-                <p>Trembolona à 1km, confira!</p>
-                <input type="button" value="Conferir" onclick="redirecionador()">
+                <p>Trembolona à 1km, <a href="#" onclick="redirecionador()">confira!</a></p>
+                
             </div>
         </div>
 

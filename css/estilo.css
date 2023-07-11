@@ -45,6 +45,23 @@ body{
     align-items: center;
 }
 
+.estrutura_inicio{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 0;
+    display: flex;
+    transform: scaleY(0);
+    transition: var(--transicaoPadrao);
+    flex-direction: column;
+    justify-content: space-around;
+}
+.showTelaInicio{
+    height: 300px;
+    transform: scaleY(1);
+    transform-origin: bottom;
+}
+
 input{
     transition: var(--transicaoPadrao);
 }
@@ -70,8 +87,10 @@ input[type="button"]:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     transition: var(--transicaoPadrao);
+    transform: scaleY(0);
+    transform-origin: bottom;
 }
 .titulo{
     display: flex;
@@ -115,13 +134,13 @@ video, img{
 }
 
 .entrada{
-    transform: translate(1000px, 0px);
+    transform: scaleY(1) translate(1000px, 0px);
 }
 .entrarTela{
-    transform: translate(0px, 0px);
+    transform: scaleY(1) translate(0px, 0px);
 }
 .sairTela{
-    transform: translate(-1000px, 0px);
+    transform: scaleY(1) translate(-1000px, 0px);
 }
 
 .questao{
@@ -176,6 +195,7 @@ video, img{
     flex-direction: column;
     transition: var(--transicaoPadrao);
     transform: scaleY(0);
+    transform-origin: bottom;
 }
 .estrutura_resultado video{
     width: 100%;
@@ -198,19 +218,19 @@ video, img{
     box-shadow: 2px 2px 5px 0px black;
     transition: var(--transicaoPadrao);
 }
-.popup_anuncio a{
+.popup_anuncio > a{
     position: absolute;
     top: 2px;
     right: 2px;
     font-size: 17px;
     color: red;
 }
-.popup_anuncio p{
+.popup_anuncio a, .popup_anuncio p, .popup_anuncio input[type="button"]{
     font-family: 'Arial', sans-serif;
 }
+
 .popup_anuncio input[type="button"]{
     padding: 5px;
-    font-family: 'Arial', sans-serif;
 }
 
 .oculto{
