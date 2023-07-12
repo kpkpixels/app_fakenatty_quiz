@@ -71,7 +71,7 @@ const caminhoVideo = "files/videos/";
 const caminhoImg = "files/imgs/"
 
 function init(){  
-  console.warn("WOOOOW LOOK AT HIM!! Are you trying to cheat??!");
+  console.warn("%cWOOOOW LOOK AT HIM!! Are you trying to cheat??!", 'color: green; background: yellow; font-size: 30px');
 
   setTimeout(() => {
     estrutura_inicio.classList.add("showTelaInicio");    
