@@ -280,6 +280,8 @@ function montaResultado(){
   '</div>'+
   '<input type="button" value="Refazer Quiz" onclick="resetQuiz()" style="margin-top: 15px">';
 
+  estrutura_resultado.querySelector("video").load(); //as vezes nao reproduz sozinho
+
   setTimeout(() => {
     let ima = estrutura_resultado.querySelector(".imagem_resultado");
     ima.style.opacity = "1";
@@ -356,6 +358,8 @@ function resetQuiz(){
   estrutura_resultado.classList.add("oculto");
   estrutura_resultado.classList.remove("escala");
   redes_sociais.classList.add("oculto");
+  video_rodrigo.classList.add("oculto");
+  imagem_rodrigo.classList.remove("oculto");      
 
   setTimeout(() => {    
     estrutura.classList.add("entrarTela");
