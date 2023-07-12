@@ -1,50 +1,50 @@
 const listaPerguntas = [
   new Questao("_________ é a fonte da juventude e a coisa ________ a fazer. Quais palavras, em ordem, completam a frase?",
     [
-      new Resposta("Natural, certa", "meu_veredito_fake.mp4", "rodrigo_afirmacao.gif"),
-      new Resposta("O suco, certa", "meu_veredito_fake.mp4", "rodrigo_negacao.gif"),
-      new Resposta("Natural, errada", "meu_veredito_fake.mp4", "rodrigo_negacao1.gif")
+      new Resposta("Natural, certa", "rodrigo_muito_asteric.mp4", "rodrigo_afirmacao.gif"),
+      new Resposta("O suco, certa", "rodrigo_suco_e_tudo.mp4", "rodrigo_negacao.gif"),
+      new Resposta("Natural, errada", "rodrigo_pouco_asteric.mp4", "rodrigo_negacao1.gif")
     ], 0),
   new Questao("Quanto você aguenta na rosca?",
     [
-      new Resposta("10kg", "meu_veredito_fake.mp4", "rodrigo_afirmacao.gif"),
-      new Resposta("40kg", "meu_veredito_fake.mp4", "rodrigo_negacao.gif"),
-      new Resposta("Mais que tu!", "meu_veredito_fake.mp4", "rodrigo_negacao1.gif")
+      new Resposta("10kg", "rodrigo_espero_mrolimpia.mp4", "rodrigo_afirmacao.gif"),
+      new Resposta("40kg", "rodrigo_is_that_flag.mp4", "rodrigo_negacao.gif"),
+      new Resposta("Mais que tu!", "rodrigo_muito_idiota.mp4", "rodrigo_negacao1.gif")
     ], 0),
   new Questao("Quem você pensa que é?",
     [
-      new Resposta("Chris Bumstead, Sibam.", "meu_veredito_fake.mp4", "rodrigo_negacao1.gif"),
-      new Resposta("Pessoa comum, natural.", "meu_veredito_fake.mp4", "rodrigo_afirmacao.gif"),
-      new Resposta("Pessoa comum, hormonizada.", "meu_veredito_fake.mp4", "rodrigo_negacao.gif")
+      new Resposta("Chris Bumstead, Sibam.", "rodrigo_chris_acho_que_nao.mp4", "rodrigo_negacao1.gif"),
+      new Resposta("Pessoa comum, natural.", "rodrigo_juntos_asteric.mp4", "rodrigo_afirmacao.gif"),
+      new Resposta("Pessoa comum, hormonizada.", "rodrigo_mamando_suco.mp4", "rodrigo_negacao.gif")
     ], 1),
   new Questao("Qual a frase dita por Rodrigo Goes ao finalizar seus vídeos?",
     [
-      new Resposta("Rodrigo Goes Out!", "meu_veredito_fake.mp4", "rodrigo_afirmacao.gif"),
-      new Resposta("Tmj família!", "meu_veredito_fake.mp4", "rodrigo_negacao1.gif"),
-      new Resposta("Um beijo na bunda e até segunda!", "meu_veredito_fake.mp4", "rodrigo_negacao.gif")
+      new Resposta("Rodrigo Goes Out!", "rodrigo_goes_out.mp4", "rodrigo_afirmacao.gif"),
+      new Resposta("Tmj família!", "rodrigo_jesus.mp4", "rodrigo_negacao1.gif"),
+      new Resposta("Um beijo na bunda e até segunda!", "rodrigo_como_burro.mp4", "rodrigo_negacao.gif")
     ], 0),
   new Questao("Você aplica no bumbum quando ninguém está olhando?",
     [
-      new Resposta("Sim né, não sou natty.", "meu_veredito_fake.mp4", "rodrigo_negacao1.gif"),
-      new Resposta("Não entendi.", "meu_veredito_fake.mp4", "rodrigo_afirmacao.gif")
+      new Resposta("Eu que não", "rodrigo_nao_usem_drogas.mp4", "rodrigo_negacao1.gif"),
+      new Resposta("Não entendi.", "rodrigo_maravilhoso.mp4", "rodrigo_afirmacao.gif")
     ], 1),
   new Questao("O ______ vicia, o shape vicia. Qual palavra completa a frase?",
     [
-      new Resposta("Baseball Bat.", "meu_veredito_fake.mp4", "rodrigo_negacao.gif"),
-      new Resposta("Suco.", "meu_veredito_fake.mp4", "rodrigo_afirmacao.gif"),
-      new Resposta("Chris Bumstead, Sibam.", "meu_veredito_fake.mp4", "rodrigo_negacao1.gif")
+      new Resposta("Baseball Bat.", "rodrigo_alguem_gosta_baseballbat.mp4", "rodrigo_negacao.gif"),
+      new Resposta("Suco.", "rodrigo_stay_natty_kids.mp4", "rodrigo_afirmacao.gif"),
+      new Resposta("Chris Bumstead, Sibam.", "rodrigo_chris_bumstead.mp4", "rodrigo_negacao1.gif")
     ], 1),
   new Questao("O que mais se encaixa com você?",
     [
-      new Resposta("Natural, boa alimentação", "meu_veredito_fake.mp4", "rodrigo_afirmacao.gif"),
-      new Resposta("17 anos, natural, vegano e alérgico a água.", "meu_veredito_fake.mp4", "rodrigo_negacao.gif"),
-      new Resposta("Abençoado pelo suco, vivo do suco, suco is my life.", "meu_veredito_fake.mp4", "rodrigo_negacao1.gif")
+      new Resposta("Natural, boa alimentação", "rodrigo_voce_vai_vencer.mp4", "rodrigo_afirmacao.gif"),
+      new Resposta("17 anos, natural, vegano e alérgico a água.", "rodrigo_realmente_verdade.mp4", "rodrigo_negacao.gif"),
+      new Resposta("Abençoado pelo suco, vivo do suco, suco is my life.", "rodrigo_jesus_kid.mp4", "rodrigo_negacao1.gif")
     ], 0),
   new Questao("Pergunta decisiva, seja sincero. Natty or Not? (Natural ou não?)",
     [
       new Resposta("Sim, sou natural!", "meu_veredito_fake.mp4", "rodrigo_afirmacao.gif"),
       new Resposta("Sim, sou mais natural que uma árvore de laranjas.", "meu_veredito_fake.mp4", "rodrigo_negacao.gif"),
-      new Resposta("Não Rodrigo, não sou natural! Admito que fiz amor com o suco.", "meu_veredito_fake.mp4", "rodrigo_negacao1.gif")
+      new Resposta("Não me questione, se eu disse que sou natural, é porque eu sou!", "meu_veredito_fake.mp4", "rodrigo_negacao1.gif")
     ], 0)
 ];
 
@@ -242,10 +242,10 @@ function montaResultado(){
   let reacaoResultadoVideo;
 
   if (resultado > 5){
-    reacaoResultadoVideo = caminhoVideo + "jesus_maria_jose.mp4";
+    reacaoResultadoVideo = caminhoVideo + "meu_veredito_natural_longo.mp4";
   }
   else if (resultado == 5){
-    reacaoResultadoVideo = caminhoVideo + "jesus_maria_jose.mp4";
+    reacaoResultadoVideo = caminhoVideo + "meu_veredito_half.mp4";
   }
   else{
     reacaoResultadoVideo = caminhoVideo + "meu_veredito_fake.mp4";
