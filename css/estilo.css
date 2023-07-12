@@ -240,7 +240,26 @@ video, img{
     opacity: 0;
     transition: var(--transicaoPadrao);
 }
+.redes_sociais{
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+.redes_sociais p{
+    margin-bottom: 5px;
+}
+.redes_sociais img{
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 0;
+}
 
+.redes_sociais_rodrigo a{
+    padding: 5px;
+}
 
 .oculto{
     display: none;

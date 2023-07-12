@@ -17,9 +17,9 @@ const listaPerguntas = [
       new Resposta("Pessoa comum, natural.", "rodrigo_juntos_asteric", "rodrigo_afirmacao.gif"),
       new Resposta("Pessoa comum, hormonizada.", "rodrigo_mamando_suco", "rodrigo_negacao.gif")
     ], 1),
-  new Questao("Qual a frase dita por Rodrigo Goes ao finalizar seus vídeos?",
+  new Questao("Qual a frase dita por Rodrigo Góes ao finalizar seus vídeos?",
     [
-      new Resposta("Rodrigo Goes Out!", "rodrigo_goes_out", "rodrigo_afirmacao.gif"),
+      new Resposta("Rodrigo Góes Out!", "rodrigo_goes_out", "rodrigo_afirmacao.gif"),
       new Resposta("Tmj família!", "rodrigo_jesus", "rodrigo_negacao1.gif"),
       new Resposta("Um beijo na bunda e até segunda!", "rodrigo_como_burro", "rodrigo_negacao.gif")
     ], 0),
