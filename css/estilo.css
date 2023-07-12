@@ -232,6 +232,14 @@ video, img{
 .popup_anuncio input[type="button"]{
     padding: 5px;
 }
+.imagem_resultado{
+    position: absolute;
+    max-width: 100%;
+    transform: rotate(340deg);
+    opacity: 0;
+    transition: var(--transicaoPadrao);
+}
+
 
 .oculto{
     display: none;
@@ -266,6 +274,9 @@ video, img{
     }
     .estrutura_resultado video{        
         height: auto;
+    }
+    .imagem_resultado{
+        max-width: 55%;
     }
     
 

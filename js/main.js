@@ -7,8 +7,8 @@ const listaPerguntas = [
     ], 0),
   new Questao("Quanto você aguenta na rosca?",
     [
-      new Resposta("10kg", "rodrigo_espero_mrolimpia.mp4", "rodrigo_afirmacao.gif"),
-      new Resposta("40kg", "rodrigo_is_that_flag.mp4", "rodrigo_negacao.gif"),
+      new Resposta("10kg.", "rodrigo_espero_mrolimpia.mp4", "rodrigo_afirmacao.gif"),
+      new Resposta("40kg.", "rodrigo_is_that_flag.mp4", "rodrigo_negacao.gif"),
       new Resposta("Mais que tu!", "rodrigo_muito_idiota.mp4", "rodrigo_negacao1.gif")
     ], 0),
   new Questao("Quem você pensa que é?",
@@ -25,14 +25,14 @@ const listaPerguntas = [
     ], 0),
   new Questao("Você aplica no bumbum quando ninguém está olhando?",
     [
-      new Resposta("Eu que não", "rodrigo_nao_usem_drogas.mp4", "rodrigo_negacao1.gif"),
+      new Resposta("Eu que não.", "rodrigo_nao_usem_drogas.mp4", "rodrigo_negacao1.gif"),
       new Resposta("Não entendi.", "rodrigo_maravilhoso.mp4", "rodrigo_afirmacao.gif")
     ], 1),
   new Questao("O ______ vicia, o shape vicia. Qual palavra completa a frase?",
     [
-      new Resposta("Baseball Bat.", "rodrigo_alguem_gosta_baseballbat.mp4", "rodrigo_negacao.gif"),
-      new Resposta("Suco.", "rodrigo_stay_natty_kids.mp4", "rodrigo_afirmacao.gif"),
-      new Resposta("Chris Bumstead, Sibam.", "rodrigo_chris_bumstead.mp4", "rodrigo_negacao1.gif")
+      new Resposta("Baseball Bat", "rodrigo_alguem_gosta_baseballbat.mp4", "rodrigo_negacao.gif"),
+      new Resposta("Suco", "rodrigo_stay_natty_kids.mp4", "rodrigo_afirmacao.gif"),
+      new Resposta("Chris Bumstead, Sibam", "rodrigo_chris_bumstead.mp4", "rodrigo_negacao1.gif")
     ], 1),
   new Questao("O que mais se encaixa com você?",
     [
@@ -240,19 +240,35 @@ function montaResultado(){
   }, 100);
 
   let reacaoResultadoVideo;
+  let carimboResultadoVideo;
+  let tempoTimeoutResultado = 2000;
 
   if (resultado > 5){
     reacaoResultadoVideo = caminhoVideo + "meu_veredito_natural_longo.mp4";
+    carimboResultadoVideo = caminhoImg + "natty.png"
+    tempoTimeoutResultado = 4000;
   }
   else if (resultado == 5){
     reacaoResultadoVideo = caminhoVideo + "meu_veredito_half.mp4";
+    carimboResultadoVideo = caminhoImg + "halfnatty.png"
+    tempoTimeoutResultado = 1500;
   }
   else{
     reacaoResultadoVideo = caminhoVideo + "meu_veredito_fake.mp4";
+    carimboResultadoVideo = caminhoImg + "fakenatty.png"
+    tempoTimeoutResultado = 3500;
   }
 
-  estrutura_resultado.innerHTML = '<video src="'+reacaoResultadoVideo+'" autoplay></video>'+
+  estrutura_resultado.innerHTML = '<div style="height: 100%;display: flex;justify-content: center;align-items: center;">'+
+  '<img class="imagem_resultado" src="'+carimboResultadoVideo+'" alt="">'+
+  '<video src="'+reacaoResultadoVideo+'" autoplay></video>'+
+  '</div>'+
   '<input type="button" value="Refazer Quiz" onclick="resetQuiz()" style="margin-top: 15px">';
+
+  setTimeout(() => {
+    let ima = estrutura_resultado.querySelector(".imagem_resultado");
+    ima.style.opacity = "1";
+  }, tempoTimeoutResultado);
 
 }
 
