@@ -260,7 +260,7 @@ function montaResultado(){
 
   estrutura_resultado.innerHTML = '<div style="height: 100%;display: flex;justify-content: center;align-items: center;">'+
   '<img class="imagem_resultado" src="'+carimboResultadoVideo+'" alt="">'+
-  '<video src="'+reacaoResultadoVideo+'" autoplay></video>'+
+  '<video playsinline src="'+reacaoResultadoVideo+'" autoplay></video>'+
   '</div>'+
   '<input type="button" value="Refazer Quiz" onclick="resetQuiz()" style="margin-top: 15px">';
 

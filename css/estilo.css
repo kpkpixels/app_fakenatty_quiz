@@ -70,7 +70,8 @@ input[type="button"]{
     font-size: 20px;
     font-weight: 600;
     text-align: center;
-    outline: auto;
+    border: 3px solid #000000;
+    border-radius: 10px;
     padding: 11px;
     cursor: pointer;
     margin: 2px;
