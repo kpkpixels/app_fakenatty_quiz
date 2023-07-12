@@ -92,15 +92,14 @@ function comecar(){
 
   video.play();
   
-  setTimeout(() => {
+  video.addEventListener("ended", function() {
     estrutura.classList.remove("oculto");
     estrutura_inicio.classList.add("oculto");
     setTimeout(() => {
       estrutura.classList.add("entrarTela");
     }, 100);
-  }, 4700);
+  });
   
-
   montaPergunta(); 
 }
 function playVideo(elemento){
@@ -273,24 +272,19 @@ function montaResultado(){
 }
 
 function emiteReacaoRodrigo(indiceRes){
-  clearTimeout(videoTimeout);
-
-  let tempoTimeout = 0;
-
   imagem_rodrigo.classList.add("oculto");
   video_rodrigo.classList.remove("oculto");
 
   let video = video_rodrigo.querySelector("video");
   video.src = caminhoVideo+listaPerguntas[perguntaAtual-1].respostas[indiceRes].videoReacaoClick;  
 
-  setTimeout(() => {
-    tempoTimeout = (video.duration * 1000) - 1000;
-
-    videoTimeout = setTimeout(() => {      
+  setTimeout(() => {    
+    video.addEventListener("ended", function() {
       video_rodrigo.classList.add("oculto");
       imagem_rodrigo.classList.remove("oculto");
-    }, tempoTimeout);
-  }, "1000");
+    });
+    
+  }, 1000);
 
   
 }
