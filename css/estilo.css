@@ -298,6 +298,14 @@ video, img{
     .imagem_resultado{
         max-width: 55%;
     }
+    .redes_sociais{
+        font-size: 10px;
+    }
+    .redes_sociais img{
+        max-width: 15px;
+        max-height: 15px;
+        border-radius: 0;
+    }
     
 
 }

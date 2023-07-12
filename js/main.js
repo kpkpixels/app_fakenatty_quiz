@@ -59,6 +59,7 @@ const container_questao = estrutura.querySelector(".container_questao");
 const barra_status_respostas = document.querySelector(".barra_status_respostas");
 const barra_loading_resultado = document.querySelector(".barra_loading_resultado");
 const carregando = document.querySelector(".carregando");
+const redes_sociais = document.querySelector(".redes_sociais");
 
 const estrutura_resultado = document.querySelector(".estrutura_resultado");
 
@@ -89,7 +90,7 @@ function comecar(){
   let botao = estrutura_inicio.querySelector("input");
   video.classList.remove("oculto");
   botao.classList.add("oculto");
-
+  
   video.play();
   
   video.addEventListener("ended", function() {
@@ -111,6 +112,8 @@ function playVideo(elemento){
 function montaPergunta(){
   barra_status_respostas.style.width = tamanhoBarra + "%";
   tamanhoBarra += (100 / listaPerguntas.length);
+
+  redes_sociais.classList.add("oculto");
   
   if (perguntaAtual < listaPerguntas.length){
     let respostas = "";
@@ -173,6 +176,10 @@ function avaliaResposta(elemento){
   if (perguntaAtual < listaPerguntas.length){
     emiteReacaoRodrigo(indiceRes);    
   }
+  else{
+    video_rodrigo.classList.add("oculto");
+    imagem_rodrigo.classList.remove("oculto");      
+  }
 
   console.log(resultado);  
   sairTela();
@@ -233,7 +240,9 @@ function montaResultado(){
   estrutura_resultado.classList.remove("oculto");  
   estrutura.classList.add("oculto");
   carregando.classList.add("oculto");
-  
+
+  redes_sociais.classList.remove("oculto");
+
   setTimeout(() => {
     estrutura_resultado.classList.add("escala");
   }, 100);
@@ -346,6 +355,7 @@ function resetQuiz(){
   carregando.classList.remove("entrarTela");
   estrutura_resultado.classList.add("oculto");
   estrutura_resultado.classList.remove("escala");
+  redes_sociais.classList.add("oculto");
 
   setTimeout(() => {    
     estrutura.classList.add("entrarTela");
