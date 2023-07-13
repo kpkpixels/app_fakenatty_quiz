@@ -197,6 +197,7 @@ video, img{
     transition: var(--transicaoPadrao);
     transform: scaleY(0);
     transform-origin: bottom;
+    z-index: 1;
 }
 .estrutura_resultado video{
     width: 100%;
