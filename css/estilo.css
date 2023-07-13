@@ -261,6 +261,9 @@ video, img{
 .redes_sociais_rodrigo a{
     padding: 5px;
 }
+.redes_sociais_rodrigo, .minhas_redes{
+    z-index: 1;
+}
 
 .oculto{
     display: none;
